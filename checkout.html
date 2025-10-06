@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -179,7 +180,7 @@
                   </div>
                 </div>
                 <div class="delivery-option">
-                  <input type="radio" class="delivery-option-input"
+                  <input type="radio" class="delivery-option-input" 
                     name="delivery-option-2">
                   <div>
                     <div class="delivery-option-date">
@@ -194,7 +195,6 @@
             </div>
           </div>
         </div>
-
         <div class="payment-summary">
           <div class="payment-summary-title">
             Order Summary
@@ -207,29 +207,55 @@
 
           <div class="payment-summary-row">
             <div>Shipping &amp; handling:</div>
-            <div class="payment-summary-money">$4.99</div>
+            <div class="payment-summary-money shipping-total">$4.99</div>
           </div>
 
           <div class="payment-summary-row subtotal-row">
             <div>Total before tax:</div>
-            <div class="payment-summary-money">$47.74</div>
+            <div class="payment-summary-money total-before-tax">$47.74</div>
           </div>
 
           <div class="payment-summary-row">
             <div>Estimated tax (10%):</div>
-            <div class="payment-summary-money">$4.77</div>
+            <div class="payment-summary-money estimated-tax">$4.77</div>
           </div>
 
           <div class="payment-summary-row total-row">
             <div>Order total:</div>
-            <div class="payment-summary-money">$52.51</div>
+            <div class="payment-summary-money total-after-tax">$52.51</div>
           </div>
-
           <button class="place-order-button button-primary">
             Place your order
           </button>
         </div>
       </div>
     </div>
+    <div class="delete-section"></div>
+    <!-- Quantity Update Popup -->
+    <div class="update-popup hidden">
+      <div class="update-popup-content">
+        <h3 style="color: rgb(0, 118, 0); margin-bottom:20px">Update Quantity</h3>
+        <div class="product-img-update">
+          <img class="img-update" src="images/products/intermediate-composite-basketball.jpg">
+          <div class="update-details">
+             <div class="product-name">
+                  Intermediate Size Basketball
+             </div>
+             <div class="product-price">
+                  $20.95
+             </div>
+             <input type="number" class="update-input" min="1" value="1">
+          </div>
+          <div></div>
+        </div>
+        
+        <div class="popup-buttons">
+          <button class="popup-save">Save</button>
+          <button class="popup-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="checkout.js"></script>
   </body>
 </html>

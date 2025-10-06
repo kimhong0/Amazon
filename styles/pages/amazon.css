@@ -122,12 +122,17 @@
   margin-bottom: 10px;
 }
 
+.product-id {
+  display: none;
+}
+
 .product-quantity-container {
   margin-bottom: 17px;
 }
 
 .product-spacer {
   flex: 1;
+  
 }
 
 .added-to-cart {
