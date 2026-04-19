@@ -59,6 +59,31 @@ document.querySelectorAll('.delivery-option-input').forEach((option) => {
     Summary()
   });
 })
+let currentProductContainer = null;
+
+document.querySelectorAll('.update-button').forEach((button,index) =>{
+  button.addEventListener('click', function(){
+    let updateDiv = document.querySelector(".hidden");
+    updateDiv.style.display = 'flex';
+    currentProductContainer = button.closest('.cart-item-container');
+    const imgSrc = currentProductContainer.querySelector(".product-image").src;
+    document.querySelector('.img-update').src = imgSrc; 
+  })
+}); 
+document.querySelector('.popup-save').addEventListener('click', function() {
+  if (currentProductContainer) {
+    const quantityUpdate = parseInt(document.querySelector(".update-input").value);
+    currentProductContainer.querySelector(".quantity-label").innerHTML = quantityUpdate;
+    // Optionally update the cart data here
+    let cartId = currentProductContainer.dataset.cartId;
+    let cartItem = cart.find(item => item.id == cartId);
+    if (cartItem) cartItem.quantity = quantityUpdate;
+    document.querySelector(".hidden").style.display = 'none';
+    localStorage.setItem("cart", JSON.stringify(cart));
+    UpdatePrice()
+    Summary(); // re-render if needed
+  }
+});
 }
 Summary()   
 // Add event listeners for delivery option changes
@@ -87,7 +112,7 @@ function DeliveryOptionhtml(cartItem) {
         >
         <div>
           <div class="delivery-option-date">
-            ${getCurrentDate(option.date  )}
+            ${getCurrentDate(option.date)}
           </div>
           <div class="delivery-option-price">
              ${Price} - Shipping
@@ -116,16 +141,8 @@ function UpdatePrice(){
   document.querySelector(".total-before-tax").innerHTML = ` $${totalBeforeTax/100}`;
   document.querySelector(".total-after-tax").innerHTML = ` $${totalAfterTax/100}`
 }
+UpdatePrice()
 
-document.querySelectorAll('.update-button').forEach((button,index) =>{
-  button.addEventListener('click', function(){
-    let updateDiv = document.querySelector(".hidden");
-    updateDiv.style.display = 'flex';
-    const productContainer = button.closest('.cart-item-container');
-    const imgSrc = productContainer.querySelector(".product-image").src;
-    document.querySelector('.img-update').src = imgSrc; 
-  })
-}); 
 
 document.querySelector(".popup-cancel").addEventListener("click",()=>{
   let updateDiv = document.querySelector(".hidden");

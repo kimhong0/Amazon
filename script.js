@@ -78,6 +78,7 @@ document.querySelectorAll(".js-add-button").forEach((button, index) => {
 
 function addQuantity(){
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+    console.log(typeof(totalQuantity))
     document.querySelector(".cart-quantity").innerHTML = totalQuantity;
   }
 addQuantity();

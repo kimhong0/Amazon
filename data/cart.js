@@ -4,6 +4,7 @@ export let cart = JSON.parse(localStorage.getItem("cart")) || [];;
 
 export function addtocart(productId,selectedQuantity){ 
   const existingitem = cart.find(item =>item.id === productId);
+  selectedQuantity = Number(selectedQuantity)
   
   if(existingitem){
     existingitem.quantity += selectedQuantity;
